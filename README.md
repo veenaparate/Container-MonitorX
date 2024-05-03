@@ -1,5 +1,5 @@
 # Container-MonitorX - Streamlined Monitoring for Containers
-Container MonitorX is a project focused on a container monitoring system using prometheus and grafana.The system offers real-time insights into container performance, assisting administrators in maintaining optimal resource utilization and addressing issues promptly.With a user-friendly grafana dashboard, Container MonitorX simplifies the monitoring process,providing key metrics for efficient container management.
+Container MonitorX is a project focused🎯on a container monitoring system using prometheus and grafana.The system offers real-time insights into container performance,assisting administrators in maintaining optimal resource utilization and addressing issues promptly.With a user-friendly grafana dashboard📊,Container MonitorX simplifies the monitoring process,providing key metrics📈for efficient container management.
 
 
 📌 **Platform Used - AWS**
@@ -13,10 +13,6 @@ Container MonitorX is a project focused on a container monitoring system using p
 ![image](https://github.com/veenaparate/Container-MonitorX/assets/120020040/eae869a6-9d56-41d0-b3f7-a41ede164d4c)
 
 ![image](https://github.com/veenaparate/Container-MonitorX/assets/120020040/5b807f23-146c-4448-adcd-8f7bab887425)
-
-
-
-
 
 
 
