@@ -1,0 +1,204 @@
+#!/bin/bash
+
+# Update packages
+sudo yum update -y
+
+# Install Docker using Amazon Linux Extras
+sudo amazon-linux-extras install docker -y
+
+# Install Docker
+sudo yum install -y docker
+
+# Start Docker service
+sudo service docker start
+
+# Add the ec2-user to the docker group
+sudo usermod -a -G docker ec2-user
+
+# Display a message indicating completion
+echo "Docker installation and configuration completed."
+
+
+
+
+
+
+
+
+
+
+
+sudo hostnamectl set-hostname Docker-Cluster-Master-1
+sudo hostnamectl set-hostname Docker-Cluster-Node-1
+Docker-Cluster_master-1
+connect to instance instal docker using script
+sudo vi install_docker.sh
+sudo chmod +x install_docker.sh
+./install_docker.sh
+sudo systemctl status docker
+
+
+
+sudo docker swarm init --advertise-addr 10.0.137.251 (docker master 1)
+sudo docker node ls
+
+token
+docker swarm join --token SWMTKN-1-2p4hhe3vw0qkqd4ilwqzasjfje2akepwqqpw8v6c7kjtkwsnxg-amu7hksyzcp27ajtwvgdfk3iy 10.0.137.251:2377
+
+
+
+
+
+
+
+
+token for worker node
+docker swarm join --token SWMTKN-1-2p4hhe3vw0qkqd4ilwqzasjfje2akepwqqpw8v6c7kjtkwsnxg-amu7hksyzcp27ajtwvgdfk3iy 10.0.137.251:2377
+
+
+
+
+
+To remove node from cluster
+sudo docker node rm x3dixt5teh1l9hy00cj29ukhy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Docker-Cluster-Master-1
+Docker-Cluster-Node-1
+sudo hostnamectl set-hostname Docker-Cluster-Master-2
+hostname
+
+
+
+
+prometheus-installation
+
+sudo vi install_prometheus.sh
+sudo chmod +x install_prometheus.sh
+./install_prometheus.sh
+sudo systemctl status prometheus.service
+
+
+
+
+Grafana installation
+
+sudo vi install_grafana.sh
+sudo chmod +x install_grafana.sh
+./install_grafana.sh
+sudo systemctl status grafana-server.service
+
+
+
+
+
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+sudo vi docker-compose.yml
+sudo docker-compose up -d
+
+sudo docker start cadvisor
+
+gcr.io/cadvisor/cadvisor:latest
+
+
+
+version: '3'
+services:
+prometheus:
+image: prom/prometheus:latest
+volumes:
+- ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+command:
+- '--config.file=/etc/prometheus/prometheus.yml'
+ports:
+- 9090:9090
+
+
+
+cadvisor:
+image: gcr.io/cadvisor/cadvisor:latest
+ports:
+- 8080:8080
+volumes:
+- /:/rootfs:ro
+- /var/run:/var/run:rw
+- /sys:/sys:ro
+- /var/lib/docker/:/var/lib/docker:ro
+
+
+
+
+grafana:
+image: grafana/grafana
+user: "1000"
+environment:
+- GF_SECURITY_ADMIN_PASSWORD=password
+depends_on:
+- prometheus
+ports:
+- 3000:3000
+
+
+
+
+
+
+
+
+
+
+image: gcr.io/cadvisor/cadvisor:latest
+ports:
+- "8080:8080"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sudo vi /etc/docker.daemon.json
+
+add:
+{
+	"metrics-addr" : "0.0.0.0:9323",
+	"experimental" : true
+}
+
+
+now restart docker
+sudo systemctl restart docker
+
+
+
+
+
+
+
+install cadvisor
+docker run -d \ --name cadvisor \ --priviledged=true \ -p 8080:8080 \ -v /var/run:/var/run:rw \ -v /var/lib/docker:/var/lib/docker:ro \ gcr.io/cadvisor/cadvisor:v0.47.2
