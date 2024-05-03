@@ -101,9 +101,10 @@ Container MonitorX is a project focused🎯on a container monitoring system usin
 
 📌**Docker Swarm installation**
 
-> sudo docker swarm init --advertise-addr 10.0.137.150 (Master IP)
-(A token will get generated)
-> sudo docker node ls
+**sudo docker swarm init --advertise-addr 10.0.137.150** (Master IP)
+
+**sudo docker node ls**
+
 ![image](https://github.com/veenaparate/Container-MonitorX/assets/120020040/71497ab1-dd52-4263-96d7-6b0b1c8889a5)
 
 
